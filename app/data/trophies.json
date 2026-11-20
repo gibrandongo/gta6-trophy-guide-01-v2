@@ -2,391 +2,790 @@
  "game": "Grand Theft Auto VI",
  "platform": "PlayStation 5",
  "list": "the official 55 trophies, 2026-11-18",
+ "route": "Leonida Platinum Route — a story-ordered journey in 9 chapters; stop numbers run 1 to 55 in the order to play them.",
+ "sources_note": "Every guide below cites the same sources: the official trophy list (Exophase) for the trophy's name, description and grade, and PSNProfiles for the PSN count where one is shown. The advice itself is our own reading of the official description, not yet checked in the game; where the description pins no place down, the guide says so instead of inventing one.",
+ "missable_note": "Missable here means the moment can pass or the attempt can fail, so it must be set up again or the mission replayed. Nothing in this list is permanently locked out on the official descriptions alone.",
+ "chapters": [
+  {"n": 1, "title": "Landfall", "blurb": "Arrive in Vice City, learn the city, and close Chapter 1."},
+  {"n": 2, "title": "Debts & Deals", "blurb": "Chapter 2 and the first job that ties Lucia and Jason together."},
+  {"n": 3, "title": "The Climb", "blurb": "Chapter 3: the crew grows, the jobs get bigger."},
+  {"n": 4, "title": "Top of the World", "blurb": "Chapter 4 and the missions that decide who runs Vice City."},
+  {"n": 5, "title": "Strangers of Leonida", "blurb": "Every stranger strand, finished one by one across the state."},
+  {"n": 6, "title": "Playground & Pastimes", "blurb": "Races, ranges, arcades and quiet corners — Leonida at play."},
+  {"n": 7, "title": "Outlaw Economy", "blurb": "Robberies, getaways and the money that funds them."},
+  {"n": 8, "title": "Loose Ends & Legends", "blurb": "Stunts, cards, odd jobs and the strange corners of the map."},
+  {"n": 9, "title": "Platinum", "blurb": "The final mission, 100% completion, and the platinum itself."}
+ ],
  "trophies": [
   {
    "id": 1,
    "name": "Vice Got a Price!",
    "description": "Congratulations! You're a Leonida Legend.",
    "grade": "platinum",
-   "guide": "Earn the other 54 trophies."
+   "kind": "misc",
+   "chapter": 9,
+   "stop": 55,
+   "district": "Vice City",
+   "difficulty": "Easy",
+   "time": "With the route",
+   "missable": false,
+   "guide": "The platinum has no task of its own: it unlocks the moment the other 54 trophies are earned. Follow the route in stop order, keep the missable flags in mind as you go, and let the tracker count you down to the last one. It cannot be missed, since it is awarded automatically once the set is complete. Sources: the official trophy list (Exophase) for name, description and grade; our own reading of the official description, not yet checked in the game."
   },
   {
    "id": 2,
    "name": "Just Like Paradise",
    "description": "Complete Gone Fishing.",
    "grade": "bronze",
-   "guide": "Finish the opening mission, Gone Fishing."
+   "kind": "story",
+   "chapter": 1,
+   "stop": 1,
+   "district": "Leonida Keys",
+   "difficulty": "Easy",
+   "time": "Story",
+   "missable": false,
+   "guide": "Play the opening mission, Gone Fishing, through to its end — it is stop 1 of the route for a reason. The trophy unlocks automatically when the mission completes, so there is nothing to prepare and nothing that can be missed; just follow the mission prompts and take your time learning the controls. Sources: the official trophy list (Exophase) for name, description and grade; our own reading of the official description, not yet checked in the game."
   },
   {
    "id": 3,
    "name": "Paradise Lost",
    "description": "Complete Chapter 1.",
    "grade": "bronze",
-   "guide": "Finish Chapter 1."
+   "kind": "story",
+   "chapter": 1,
+   "stop": 3,
+   "district": "Vice City",
+   "difficulty": "Easy",
+   "time": "Story",
+   "missable": false,
+   "guide": "Finish every story mission in Chapter 1. Chapter trophies unlock on completion of the chapter, not on any single mission, so the only way to miss this one is to stop playing the story. Keep the story moving and it lands on its own. Sources: the official trophy list (Exophase) for name, description and grade; our own reading of the official description, not yet checked in the game."
   },
   {
    "id": 4,
    "name": "T**s Ass Drug Money",
    "description": "Complete Chapter 2.",
    "grade": "bronze",
-   "guide": "Finish Chapter 2."
+   "kind": "story",
+   "chapter": 2,
+   "stop": 4,
+   "district": "Vice City",
+   "difficulty": "Easy",
+   "time": "Story",
+   "missable": false,
+   "guide": "Finish every story mission in Chapter 2. Like the other chapter trophies it unlocks automatically when the chapter closes, so there is no special condition to meet and nothing to prepare. If you are working the route in order, this is the natural next stop after Chapter 1. Sources: the official trophy list (Exophase) for name, description and grade; our own reading of the official description, not yet checked in the game."
   },
   {
    "id": 5,
    "name": "Vice City, Baby!",
    "description": "Complete Chapter 3.",
    "grade": "bronze",
-   "guide": "Finish Chapter 3."
+   "kind": "story",
+   "chapter": 3,
+   "stop": 6,
+   "district": "Vice City",
+   "difficulty": "Easy",
+   "time": "Story",
+   "missable": false,
+   "guide": "Finish every story mission in Chapter 3. Chapter trophies are automatic on completion, so play the missions in order and this one arrives by itself. By this point in the route the city is opening up, so it is also a good moment to start the free-roam stops in later chapters between missions. Sources: the official trophy list (Exophase) for name, description and grade; our own reading of the official description, not yet checked in the game."
   },
   {
    "id": 6,
    "name": "Top Of The World, Ma",
    "description": "Complete Chapter 4.",
    "grade": "bronze",
-   "guide": "Finish Chapter 4."
+   "kind": "story",
+   "chapter": 4,
+   "stop": 10,
+   "district": "Vice City",
+   "difficulty": "Easy",
+   "time": "Story",
+   "missable": false,
+   "guide": "Finish every story mission in Chapter 4. It unlocks automatically when the chapter closes, the same as the earlier chapter trophies. Before you push into the finale chapter, use this point in the route to clear the stranger strands in Chapter 5 — they are easier to finish while the story is still unfolding. Sources: the official trophy list (Exophase) for name, description and grade; our own reading of the official description, not yet checked in the game."
   },
   {
    "id": 7,
    "name": "You Gotta Know When to Get Off",
    "description": "Complete the final mission.",
    "grade": "gold",
-   "guide": "Finish the final mission (gold)."
+   "kind": "story",
+   "chapter": 9,
+   "stop": 53,
+   "district": "Vice City",
+   "difficulty": "Easy",
+   "time": "Story",
+   "missable": false,
+   "guide": "Play the final mission to its end. This gold trophy is the story's closing beat and unlocks automatically on completion, so the only preparation that matters is everything before it: finish the missable-flagged stops and the stranger strands first, because the post-story cleanup in Chapter 8 is smoother with the story done. Sources: the official trophy list (Exophase) for name, description and grade; our own reading of the official description, not yet checked in the game."
   },
   {
    "id": 8,
    "name": "Trust",
    "description": "Complete Breakfast Run.",
    "grade": "bronze",
-   "guide": "Finish the mission Breakfast Run."
+   "kind": "story",
+   "chapter": 2,
+   "stop": 5,
+   "district": "Vice City",
+   "difficulty": "Easy",
+   "time": "Story",
+   "missable": false,
+   "guide": "Complete the story mission Breakfast Run. Mission trophies unlock when the mission ends, so there is no extra objective to chase inside it — finish it and move on. It sits early in the route, in Chapter 2, and is a good first check that the tracker is counting your story progress. Sources: the official trophy list (Exophase) for name, description and grade; our own reading of the official description, not yet checked in the game."
   },
   {
    "id": 9,
    "name": "Break the Bank",
    "description": "Complete The Cartel Heist.",
    "grade": "bronze",
-   "guide": "Finish the mission The Cartel Heist."
+   "kind": "story",
+   "chapter": 3,
+   "stop": 7,
+   "district": "Vice City",
+   "difficulty": "Easy",
+   "time": "Story",
+   "missable": false,
+   "guide": "Complete the story mission The Cartel Heist. It unlocks when the mission ends, with no side objective named in the description, so treat it as a straight story stop. Heist missions tend to be long, so set aside an uninterrupted session rather than rushing it between other stops. Sources: the official trophy list (Exophase) for name, description and grade; our own reading of the official description, not yet checked in the game."
   },
   {
    "id": 10,
    "name": "Family Matters",
    "description": "Complete Child's Play.",
    "grade": "bronze",
-   "guide": "Finish the mission Child's Play."
+   "kind": "story",
+   "chapter": 3,
+   "stop": 8,
+   "district": "Leonida Bay",
+   "difficulty": "Easy",
+   "time": "Story",
+   "missable": false,
+   "guide": "Complete the story mission Child's Play. Like every mission trophy it unlocks on completion, so the guide here is simply to play it through. It comes in Chapter 3, between the bigger heist stops, and needs no preparation. Sources: the official trophy list (Exophase) for name, description and grade; our own reading of the official description, not yet checked in the game."
   },
   {
    "id": 11,
    "name": "DWNFALL",
    "description": "Complete Headliners.",
    "grade": "bronze",
-   "guide": "Finish the mission Headliners."
+   "kind": "story",
+   "chapter": 3,
+   "stop": 9,
+   "district": "Downtown",
+   "difficulty": "Easy",
+   "time": "Story",
+   "missable": false,
+   "guide": "Complete the story mission Headliners. It unlocks when the mission ends, so there is nothing extra to do inside it. Play it as part of the Chapter 3 run and tick it off as you go — the route puts it right before the Chapter 4 stretch. Sources: the official trophy list (Exophase) for name, description and grade; our own reading of the official description, not yet checked in the game."
   },
   {
    "id": 12,
    "name": "Hi-Jacked",
    "description": "Complete VCIA Takedown.",
    "grade": "bronze",
-   "guide": "Finish the mission VCIA Takedown."
+   "kind": "story",
+   "chapter": 4,
+   "stop": 11,
+   "district": "VCIA",
+   "difficulty": "Easy",
+   "time": "Story",
+   "missable": false,
+   "guide": "Complete the story mission VCIA Takedown, set around Vice City International Airport. It unlocks on mission completion with no extra condition in the description. Since the mission's setting is the airport, this is also the natural moment to attempt the airport-themed free-roam stop nearby before moving on. Sources: the official trophy list (Exophase) for name, description and grade; our own reading of the official description, not yet checked in the game."
   },
   {
    "id": 13,
    "name": "Snow Storm",
    "description": "Complete Operation Savage Glory.",
    "grade": "bronze",
-   "guide": "Finish the mission Operation Savage Glory."
+   "kind": "story",
+   "chapter": 4,
+   "stop": 12,
+   "district": "Ambrosia",
+   "difficulty": "Easy",
+   "time": "Story",
+   "missable": false,
+   "guide": "Complete the story mission Operation Savage Glory. It unlocks when the mission ends, so play it through like the other mission stops. It closes the Chapter 4 mission run of the route; once it is done, the stranger strands in Chapter 5 are the next stops. Sources: the official trophy list (Exophase) for name, description and grade; our own reading of the official description, not yet checked in the game."
   },
   {
    "id": 14,
    "name": "A Long Road",
    "description": "Attain 100% Completion.",
    "grade": "gold",
-   "guide": "Reach 100% completion (gold)."
+   "kind": "misc",
+   "chapter": 9,
+   "stop": 54,
+   "district": "Vice City",
+   "difficulty": "Long grind",
+   "time": "60+ h est.",
+   "missable": false,
+   "guide": "Reach 100% completion, which means finishing the story, the stranger strands, the collectibles and the activities the game counts toward completion. This is the last gold before the platinum and the longest stop on the route, so treat the other 53 trophies as its checklist: when the tracker shows everything else earned, this one should be close behind. Check the in-game completion stat regularly, since the official description does not list which activities count. Sources: the official trophy list (Exophase) for name, description and grade; our own reading of the official description, not yet checked in the game."
   },
   {
    "id": 15,
    "name": "Cunning Stunts",
    "description": "Complete 250 Stunts.",
    "grade": "silver",
-   "guide": "Pull off 250 stunts (silver)."
+   "kind": "activity",
+   "chapter": 8,
+   "stop": 43,
+   "district": "Leonida Bay",
+   "difficulty": "Long grind",
+   "time": "8+ h est.",
+   "missable": false,
+   "guide": "Pull off 250 stunts across Leonida — jumps, near misses, drifts and airtime, whatever the game counts as a stunt. This is a background grind, not a single session: it ticks up naturally while you drive between other stops, so do not chase it first. Pick fast cars, use ramps and long straight roads, and let the count build over the whole route. PSN tracks the count to 250. Sources: the official trophy list (Exophase) for name, description and grade; PSNProfiles for the PSN count; our own reading of the official description, not yet checked in the game."
   },
   {
    "id": 16,
    "name": "Master of None",
    "description": "Try each type of activity once.",
    "grade": "bronze",
-   "guide": "Try all 9 activity types once."
+   "kind": "activity",
+   "chapter": 6,
+   "stop": 20,
+   "district": "Vice City",
+   "difficulty": "Easy",
+   "time": "1–2 h",
+   "missable": false,
+   "guide": "Try each of the 9 activity types once — racing, fishing, shooting range, drone races, arcade games, bowling, meditation, hunting and whatever else the game lists as an activity. You do not need to win or finish any of them, just sample each one, which makes this the perfect opener for Chapter 6: one taste of everything, then come back later for the trophies that ask for mastery. The official description does not name the 9 types, so work through the activities this guide lists. Sources: the official trophy list (Exophase) for name, description and grade; our own reading of the official description, not yet checked in the game."
   },
   {
    "id": 17,
    "name": "The Shootist",
    "description": "Earn a gold medal in all Shooting Range challenges.",
    "grade": "silver",
-   "guide": "Gold all 42 Shooting Range challenges (silver)."
+   "kind": "activity",
+   "chapter": 6,
+   "stop": 27,
+   "district": "Vice City",
+   "difficulty": "Hard",
+   "time": "4–6 h est.",
+   "missable": false,
+   "guide": "Earn a gold medal in all 42 Shooting Range challenges. This is the hardest pure-skill stop on the route: gold means tight accuracy and speed on every challenge, so expect to repeat the later ones many times. Learn each challenge's layout first with a bronze or silver run, then go for gold once you know the target order. Take breaks — tired aim is the main reason gold slips away. PSN tracks the count to 42. Sources: the official trophy list (Exophase) for name, description and grade; PSNProfiles for the PSN count; our own reading of the official description, not yet checked in the game."
   },
   {
    "id": 18,
    "name": "Top Fun",
    "description": "Win a Top Fun Drone Race at every location.",
    "grade": "bronze",
-   "guide": "Win a Top Fun drone race at all 14 locations."
+   "kind": "activity",
+   "chapter": 6,
+   "stop": 25,
+   "district": "Leonida Bay",
+   "difficulty": "Medium",
+   "time": "2–3 h est.",
+   "missable": false,
+   "guide": "Win a Top Fun drone race at all 14 locations. Each location is its own course, so a win at one does not count for the others — visit every drone race spot on the map and take first place at each. Learn the course on a practice run, then race to win; the drone handles differently from a car, so give yourself a run or two to adjust at each new location. PSN tracks the count to 14. Sources: the official trophy list (Exophase) for name, description and grade; PSNProfiles for the PSN count; our own reading of the official description, not yet checked in the game."
   },
   {
    "id": 19,
    "name": "Earn Cash, Not Kudos",
    "description": "Win 20 different races.",
    "grade": "bronze",
-   "guide": "Win 20 different races."
+   "kind": "activity",
+   "chapter": 6,
+   "stop": 26,
+   "district": "Leonida Bay",
+   "difficulty": "Medium",
+   "time": "3–4 h est.",
+   "missable": false,
+   "guide": "Win 20 different races — the key word is different, so repeating the same easy race does not help. Work through the race list across Leonida, picking a fresh race each time, and keep a car suited to each race type. Losing a race costs nothing but time, so retry freely. This pairs well with the drone races and the stunt grind, since all three keep you on the road. Sources: the official trophy list (Exophase) for name, description and grade; our own reading of the official description, not yet checked in the game."
   },
   {
    "id": 20,
    "name": "Baited My Tackle",
    "description": "Beat Cal in a fishing challenge.",
    "grade": "bronze",
-   "guide": "Beat Cal in a fishing challenge."
+   "kind": "activity",
+   "chapter": 6,
+   "stop": 21,
+   "district": "Leonida Keys",
+   "difficulty": "Easy",
+   "time": "30 min",
+   "missable": false,
+   "guide": "Beat Cal in a fishing challenge. Fishing challenges are head-to-head, so the aim is to out-fish one rival, not to catch everything in the water. Watch how Cal fishes, match his pace early, and save your best casts for the end. If you lose, challenge him again — the description names no limit on attempts. Sources: the official trophy list (Exophase) for name, description and grade; our own reading of the official description, not yet checked in the game."
   },
   {
    "id": 21,
    "name": "Stick Fiddler",
    "description": "Complete an arcade game.",
    "grade": "bronze",
-   "guide": "Finish one arcade game."
+   "kind": "activity",
+   "chapter": 6,
+   "stop": 22,
+   "district": "Downtown",
+   "difficulty": "Easy",
+   "time": "20 min",
+   "missable": false,
+   "guide": "Complete one arcade game, start to finish. Any arcade cabinet counts, so pick the game you enjoy most and play it through — you do not need a high score, just a completion. This is a quick palate cleanser between the longer Chapter 6 stops, and it also counts toward the activity types for Master of None. Sources: the official trophy list (Exophase) for name, description and grade; our own reading of the official description, not yet checked in the game."
   },
   {
    "id": 22,
    "name": "Road to Rehabilitation",
    "description": "Complete the final mission for Andy.",
    "grade": "bronze",
-   "guide": "Finish Andy's last mission."
+   "kind": "side",
+   "chapter": 5,
+   "stop": 13,
+   "district": "Port Gellhorn",
+   "difficulty": "Easy",
+   "time": "Story",
+   "missable": false,
+   "guide": "Play through Andy's strand of stranger missions until the final one is done. Each stranger has a chain of missions that ends with a final mission, and the trophy unlocks when that last one completes. Do the whole strand in one stretch if you can, so you do not lose track of where it left off. Sources: the official trophy list (Exophase) for name, description and grade; our own reading of the official description, not yet checked in the game."
   },
   {
    "id": 23,
    "name": "This Was No Boat Accident",
    "description": "Complete the final mission for Kenton.",
    "grade": "bronze",
-   "guide": "Finish Kenton's last mission."
+   "kind": "side",
+   "chapter": 5,
+   "stop": 14,
+   "district": "Leonida Keys",
+   "difficulty": "Easy",
+   "time": "Story",
+   "missable": false,
+   "guide": "Play through Kenton's strand of stranger missions until the final one is done. The trophy unlocks on completion of that last mission, so the work is simply following the strand to its end. Kenton's missions are tied to the water, so expect boats and the Keys — keep a fast boat handy between his missions. Sources: the official trophy list (Exophase) for name, description and grade; our own reading of the official description, not yet checked in the game."
   },
   {
    "id": 24,
    "name": "The Lone Rider",
    "description": "Complete the final mission for Billy.",
    "grade": "bronze",
-   "guide": "Finish Billy's last mission."
+   "kind": "side",
+   "chapter": 5,
+   "stop": 15,
+   "district": "Mount Kalina",
+   "difficulty": "Easy",
+   "time": "Story",
+   "missable": false,
+   "guide": "Play through Billy's strand of stranger missions until the final one is done. The trophy unlocks when that last mission completes, with no extra condition in the description. Billy's strand is the rider's story of the set, so expect bikes and open road; finish it in one stretch if you can. Sources: the official trophy list (Exophase) for name, description and grade; our own reading of the official description, not yet checked in the game."
   },
   {
    "id": 25,
    "name": "Strangers & Freaks",
    "description": "Complete 8 mission strands for strangers across the state of Leonida.",
    "grade": "silver",
-   "guide": "Finish 8 stranger strands (silver)."
+   "kind": "side",
+   "chapter": 5,
+   "stop": 19,
+   "district": "Vice City",
+   "difficulty": "Medium",
+   "time": "Story",
+   "missable": false,
+   "guide": "Complete 8 stranger mission strands across Leonida. This silver is the umbrella over the individual stranger trophies: finish Andy, Kenton, Billy, Randy, Tyrone and Bret, plus two more strands the official description does not name, and it unlocks. The route puts it last in Chapter 5 for that reason — tick the six named strands off first, then hunt the remaining two. Sources: the official trophy list (Exophase) for name, description and grade; our own reading of the official description, not yet checked in the game."
   },
   {
    "id": 26,
    "name": "Supply & Demand",
    "description": "Complete the final mission for Randy.",
    "grade": "bronze",
-   "guide": "Finish Randy's last mission."
+   "kind": "side",
+   "chapter": 5,
+   "stop": 16,
+   "district": "Ambrosia",
+   "difficulty": "Easy",
+   "time": "Story",
+   "missable": false,
+   "guide": "Play through Randy's strand of stranger missions until the final one is done. The trophy unlocks on completion of that last mission. Randy's strand is about supply, so expect deliveries and deals; follow the strand markers and finish it in order. Sources: the official trophy list (Exophase) for name, description and grade; our own reading of the official description, not yet checked in the game."
   },
   {
    "id": 27,
    "name": "Spin On This!",
    "description": "Complete the final mission for Tyrone.",
    "grade": "bronze",
-   "guide": "Finish Tyrone's last mission."
+   "kind": "side",
+   "chapter": 5,
+   "stop": 17,
+   "district": "Downtown",
+   "difficulty": "Easy",
+   "time": "Story",
+   "missable": false,
+   "guide": "Play through Tyrone's strand of stranger missions until the final one is done. The trophy unlocks when that last mission completes, with no extra condition in the description. Finish the strand in order and tick it off — it is one of the six named strands that count toward the Strangers & Freaks silver. Sources: the official trophy list (Exophase) for name, description and grade; our own reading of the official description, not yet checked in the game."
   },
   {
    "id": 28,
    "name": "Positive Mental Attitude",
    "description": "Meditate at every spot across Leonida.",
    "grade": "bronze",
-   "guide": "Meditate at all 18 spots."
+   "kind": "activity",
+   "chapter": 6,
+   "stop": 28,
+   "district": "Mount Kalina",
+   "difficulty": "Easy",
+   "time": "1–2 h est.",
+   "missable": false,
+   "guide": "Meditate at all 18 meditation spots across Leonida. The spots are spread over the whole state, so this is a travel trophy: visit each one, sit down and meditate, and move to the next. It pairs naturally with the exploration trophy, since both reward covering the map. PSN tracks the count to 18. Sources: the official trophy list (Exophase) for name, description and grade; PSNProfiles for the PSN count; our own reading of the official description, not yet checked in the game."
   },
   {
    "id": 29,
    "name": "Fair Game",
    "description": "Hunt a unique animal for Bret.",
    "grade": "bronze",
-   "guide": "Hunt the unique animal for Bret."
+   "kind": "side",
+   "chapter": 5,
+   "stop": 18,
+   "district": "Grassrivers",
+   "difficulty": "Medium",
+   "time": "1 h est.",
+   "missable": false,
+   "guide": "Hunt the unique animal Bret asks for. This is Bret's stranger strand in hunting form: find the animal, track it and take it down. The official description does not name the animal or where it lives, so follow Bret's missions and his directions in the game rather than guessing a spot. Bring a scoped weapon and approach quietly — a spooked animal is a failed hunt. Sources: the official trophy list (Exophase) for name, description and grade; our own reading of the official description, not yet checked in the game."
   },
   {
    "id": 30,
    "name": "Don't Touch My Deck",
    "description": "Complete 3 Collectible Card sets.",
    "grade": "silver",
-   "guide": "Complete 3 collectible card sets (silver)."
+   "kind": "collectible",
+   "chapter": 8,
+   "stop": 44,
+   "district": "Vice City",
+   "difficulty": "Medium",
+   "time": "3–5 h est.",
+   "missable": false,
+   "guide": "Complete 3 full sets of collectible cards. Cards are hidden around Leonida, so this is a scavenger hunt: pick up every card you pass while doing other stops, and check your collection after each chapter to see which sets are close. Finishing a set means finding every card in it, so keep notes on which sets are one or two cards short. The official description does not say how many cards a set holds, so let the in-game collection screen guide you. Sources: the official trophy list (Exophase) for name, description and grade; our own reading of the official description, not yet checked in the game."
   },
   {
    "id": 31,
    "name": "You WAiNKer!",
    "description": "WAiNK It at 100 locations.",
    "grade": "silver",
-   "guide": "WAiNK It at 100 locations (silver)."
+   "kind": "collectible",
+   "chapter": 8,
+   "stop": 45,
+   "district": "Vice City",
+   "difficulty": "Long grind",
+   "time": "6+ h est.",
+   "missable": false,
+   "guide": "Use the WAiNK It feature at 100 different locations across Leonida. The count is the challenge here, not any single spot: WAiNK at every new place you visit, and make it a habit whenever you arrive somewhere new. The count builds across the whole route if you start early, so begin in Chapter 1 and keep it going. PSN tracks the count to 100. Sources: the official trophy list (Exophase) for name, description and grade; PSNProfiles for the PSN count; our own reading of the official description, not yet checked in the game."
   },
   {
    "id": 32,
    "name": "One Last Thing",
    "description": "Complete 50 Challenges.",
    "grade": "bronze",
-   "guide": "Finish 50 challenges."
+   "kind": "activity",
+   "chapter": 8,
+   "stop": 46,
+   "district": "Vice City",
+   "difficulty": "Medium",
+   "time": "4–6 h est.",
+   "missable": false,
+   "guide": "Complete 50 challenges. Challenges are the game's side objectives — small tasks scattered through activities, driving, combat and exploration — so this one fills up while you play everything else. Check the challenge list regularly and pick off the easy ones first; the count reaches 50 well before you have done them all. The official description does not name the challenges, so let the in-game list be your guide. Sources: the official trophy list (Exophase) for name, description and grade; our own reading of the official description, not yet checked in the game."
   },
   {
    "id": 33,
    "name": "Hot Together",
    "description": "Lose a 4 star Wanted Level with your partner and escape the heat.",
    "grade": "bronze",
-   "guide": "Lose a 4-star wanted level with your partner."
+   "kind": "outlaw",
+   "chapter": 7,
+   "stop": 30,
+   "district": "Vice City",
+   "difficulty": "Medium",
+   "time": "30 min",
+   "missable": true,
+   "guide": "With your partner beside you, build a 4-star wanted level, then lose it and escape. The setup matters: do it in open country with a fast car and a clear escape route, not in the city centre, and keep your partner close — the description requires them to be with you when the heat breaks. If the wanted level drops to 3 stars first, or your partner is left behind, set it up and try again. Missable: the moment can fail, so attempt it deliberately rather than hoping it happens by accident. Sources: the official trophy list (Exophase) for name, description and grade; our own reading of the official description, not yet checked in the game."
   },
   {
    "id": 34,
    "name": "Retail Therapy",
    "description": "Rob 3 shops back-to-back with your partner without losing your Wanted Level.",
    "grade": "bronze",
-   "guide": "Rob 3 shops in a row with your partner, keeping your wanted level."
+   "kind": "outlaw",
+   "chapter": 7,
+   "stop": 31,
+   "district": "Vice City",
+   "difficulty": "Medium",
+   "time": "30 min",
+   "missable": true,
+   "guide": "With your partner, rob 3 shops one after another without losing your wanted level. Plan the run before you start: pick three shops close together, keep a fast getaway car parked outside each one, and keep moving — lingering is what loses the wanted level. If the wanted level drops between shops, the run is over and you start again from the first shop. Missable: the chain breaks if the wanted level is lost, so attempt it as a planned run. Sources: the official trophy list (Exophase) for name, description and grade; our own reading of the official description, not yet checked in the game."
   },
   {
    "id": 35,
    "name": "Whip It Good",
    "description": "Discover 100 vehicles.",
    "grade": "bronze",
-   "guide": "Discover 100 vehicles."
+   "kind": "exploration",
+   "chapter": 7,
+   "stop": 39,
+   "district": "Leonida Bay",
+   "difficulty": "Medium",
+   "time": "3–5 h est.",
+   "missable": false,
+   "guide": "Discover 100 different vehicles. Every new vehicle you drive or sit in counts, so variety is the whole game: try cars, bikes, boats and aircraft whenever you pass one, and do not stick to one favourite. It builds naturally across the route, but check the count now and then — near the end, hunt the rare types you have not driven yet. Sources: the official trophy list (Exophase) for name, description and grade; our own reading of the official description, not yet checked in the game."
   },
   {
    "id": 36,
    "name": "Gunslinger",
    "description": "Take down 5 enemies in a single use of Combat Focus.",
    "grade": "bronze",
-   "guide": "Down 5 enemies in one Combat Focus."
+   "kind": "outlaw",
+   "chapter": 7,
+   "stop": 36,
+   "district": "Ambrosia",
+   "difficulty": "Medium",
+   "time": "30 min",
+   "missable": true,
+   "guide": "Take down 5 enemies during one single use of Combat Focus. Set it up: find a spot with at least five enemies close together, trigger Combat Focus, and work through them fast before it ends. If you only get four, the attempt fails and you try again — the count does not carry over between uses. Missable: the five must fall inside one use, so pick a crowded fight, not a quiet one. Sources: the official trophy list (Exophase) for name, description and grade; our own reading of the official description, not yet checked in the game."
   },
   {
    "id": 37,
    "name": "Catch Me If You Can",
    "description": "Make an unscheduled departure at VCIA.",
    "grade": "bronze",
-   "guide": "Leave VCIA in an unscheduled way."
+   "kind": "outlaw",
+   "chapter": 7,
+   "stop": 37,
+   "district": "VCIA",
+   "difficulty": "Easy",
+   "time": "20 min",
+   "missable": true,
+   "guide": "Make an unscheduled departure from Vice City International Airport — leave by air without going through the normal departure. Head to the airport, get a plane airborne from somewhere other than a scheduled takeoff, and the trophy should pop. The description does not pin down the exact method, so treat it as an experiment at the airfield and try the most direct unscheduled way out. Missable: it is a one-off stunt at a specific place, so attempt it deliberately while you are at VCIA. Sources: the official trophy list (Exophase) for name, description and grade; our own reading of the official description, not yet checked in the game."
   },
   {
    "id": 38,
    "name": "Challenging Tank",
    "description": "Kinda hot in these Rhinos.",
    "grade": "bronze",
-   "guide": "Deal with Rhinos (tanks)."
+   "kind": "outlaw",
+   "chapter": 7,
+   "stop": 38,
+   "district": "Grassrivers",
+   "difficulty": "Medium",
+   "time": "1 h est.",
+   "missable": true,
+   "guide": "Deal with the Rhinos — the tanks — in whatever way the game asks when you meet them. The description is a joke, not an instruction, so the honest guide is this: when a Rhino shows up, survive the encounter and do what the game prompts, whether that is stealing one, destroying one or escaping one. The exact requirement is not pinned down by the official description, so watch for the prompt in the game. Missable: tank encounters are rare, so do not pass one up. Sources: the official trophy list (Exophase) for name, description and grade; our own reading of the official description, not yet checked in the game."
   },
   {
    "id": 39,
    "name": "Sneakthief",
    "description": "Rob a jewelry store without being detected.",
    "grade": "bronze",
-   "guide": "Rob a jewelry store without being seen."
+   "kind": "outlaw",
+   "chapter": 7,
+   "stop": 32,
+   "district": "Downtown",
+   "difficulty": "Medium",
+   "time": "30 min",
+   "missable": true,
+   "guide": "Rob a jewelry store without being detected — no alarms, no witnesses raising the alarm, no getting spotted. Scout the store first, go in quiet, move slowly and leave the same way. If you are detected, the attempt fails, so back out and try again rather than fighting through it. This is the route's stealth stop: patience beats speed. Missable: one detection ends the attempt, so plan it as a quiet run. Sources: the official trophy list (Exophase) for name, description and grade; our own reading of the official description, not yet checked in the game."
   },
   {
    "id": 40,
    "name": "Maximum Withdrawal",
    "description": "Rob 5 Bank Vaults and escape.",
    "grade": "silver",
-   "guide": "Rob 5 bank vaults and escape (silver)."
+   "kind": "outlaw",
+   "chapter": 7,
+   "stop": 34,
+   "district": "Vice City",
+   "difficulty": "Hard",
+   "time": "3–4 h est.",
+   "missable": false,
+   "guide": "Rob 5 bank vaults and escape after each one. Vaults are the biggest robberies on the route, so each one needs a plan: a getaway car, an escape route and enough firepower for the response. You do not need to do all five at once — the count carries across attempts — so take them one at a time between other stops. The escape matters as much as the robbery, so never crack a vault without knowing how you are leaving. Sources: the official trophy list (Exophase) for name, description and grade; our own reading of the official description, not yet checked in the game."
   },
   {
    "id": 41,
    "name": "A Classic Blitz Play",
    "description": "Rob an Armored Truck and escape.",
    "grade": "bronze",
-   "guide": "Rob an armored truck and escape."
+   "kind": "outlaw",
+   "chapter": 7,
+   "stop": 33,
+   "district": "Leonida Bay",
+   "difficulty": "Easy",
+   "time": "20 min",
+   "missable": true,
+   "guide": "Rob an armored truck and escape. Trucks move around the map, so watch the roads for one, block it, take the cash and get clear before the response arrives. The escape is part of the trophy — the job is not done until you are away clean. Missable: the truck can get away or the escape can fail, so pick a quiet stretch of road and a fast car. Sources: the official trophy list (Exophase) for name, description and grade; our own reading of the official description, not yet checked in the game."
   },
   {
    "id": 42,
    "name": "The Goodtime State",
    "description": "Explore all of Leonida.",
    "grade": "bronze",
-   "guide": "Explore all 52 areas of Leonida."
+   "kind": "exploration",
+   "chapter": 8,
+   "stop": 47,
+   "district": "Mount Kalina",
+   "difficulty": "Medium",
+   "time": "4–6 h est.",
+   "missable": false,
+   "guide": "Explore all 52 areas of Leonida. This is the map-completion trophy: every named area counts, so the work is covering the whole state, not any one place. Drive the highways, take the back roads, and check the map for grey areas you have not visited. It pairs with the meditation spots and the vehicle discoveries, since all three reward travel. PSN tracks the count to 52. Sources: the official trophy list (Exophase) for name, description and grade; PSNProfiles for the PSN count; our own reading of the official description, not yet checked in the game."
   },
   {
    "id": 43,
    "name": "Pest Control",
    "description": "Rob an Illegal Operation belonging to each gang.",
    "grade": "bronze",
-   "guide": "Rob one illegal operation of each of the 9 gangs."
+   "kind": "outlaw",
+   "chapter": 7,
+   "stop": 35,
+   "district": "Port Gellhorn",
+   "difficulty": "Medium",
+   "time": "2–3 h est.",
+   "missable": false,
+   "guide": "Rob an illegal operation belonging to each of the 9 gangs. Every gang runs its own operations, so this is a tour of the underworld: hit one operation per gang and the trophy pops. Keep a list of which gangs you have hit — the count only completes when all nine are covered, and it is easy to forget one. The official description does not name the gangs, so let the game's gang markers guide you. Sources: the official trophy list (Exophase) for name, description and grade; our own reading of the official description, not yet checked in the game."
   },
   {
    "id": 44,
    "name": "In The Beginning…",
    "description": "Enjoy a cocktail with a view on Ocean Beach.",
    "grade": "bronze",
-   "guide": "Have a cocktail with a view on Ocean Beach."
+   "kind": "activity",
+   "chapter": 1,
+   "stop": 2,
+   "district": "Ocean Beach",
+   "difficulty": "Easy",
+   "time": "10 min",
+   "missable": false,
+   "guide": "Go to Ocean Beach, order a cocktail, and enjoy the view. It is the route's gentlest stop — a breather right after the opening mission — and it unlocks as soon as you have the drink with the ocean in front of you. Do it early, while you are still learning the city, and tick it off before Chapter 1 ends. Sources: the official trophy list (Exophase) for name, description and grade; our own reading of the official description, not yet checked in the game."
   },
   {
    "id": 45,
    "name": "Capital Offense",
    "description": "Smash your way out of a vehicle showroom in classic style.",
    "grade": "bronze",
-   "guide": "Smash out of a vehicle showroom in style."
+   "kind": "outlaw",
+   "chapter": 8,
+   "stop": 48,
+   "district": "Downtown",
+   "difficulty": "Easy",
+   "time": "20 min",
+   "missable": true,
+   "guide": "Get inside a vehicle showroom, then smash your way out through the glass in classic style. Pick a showroom with big front windows, drive a car in or grab one inside, and go straight out through the glass. The style is the point: a slow walk out the door will not do it. Missable: the smash has to happen as one clean exit, so line it up before you accelerate. Sources: the official trophy list (Exophase) for name, description and grade; our own reading of the official description, not yet checked in the game."
   },
   {
    "id": 46,
    "name": "Let’s Go Bowling",
    "description": "Follow-through at the Kolt & Associates' bowling alley.",
    "grade": "bronze",
-   "guide": "Play bowling at the Kolt & Associates alley."
+   "kind": "activity",
+   "chapter": 6,
+   "stop": 23,
+   "district": "Downtown",
+   "difficulty": "Easy",
+   "time": "20 min",
+   "missable": true,
+   "guide": "Go to the Kolt & Associates bowling alley and bowl with a proper follow-through. The description points at the follow-through itself, so play the shot cleanly rather than rushing it — a full, steady delivery is what the game is watching for. If the first game does not pop it, bowl another and focus on the release. Missable: the moment is the delivery, so take the shot seriously. Sources: the official trophy list (Exophase) for name, description and grade; our own reading of the official description, not yet checked in the game."
   },
   {
    "id": 47,
    "name": "Personal Best",
    "description": "A partnership with mass appeal.",
    "grade": "bronze",
-   "guide": "A partnership moment with mass appeal."
+   "kind": "misc",
+   "chapter": 8,
+   "stop": 49,
+   "district": "Vice City",
+   "difficulty": "Easy",
+   "time": "30 min",
+   "missable": true,
+   "guide": "Do something with your partner that wins mass appeal — the description is deliberately vague, and the honest guide is that this is a partnership moment, not a grind. Play the partner activities together, look for the one that draws a crowd, and the trophy will pop when you find it. The exact trigger is not pinned down by the official description, so treat it as an experiment with your partner, not a checklist item. Missable: it needs your partner present, so attempt it while the two of you are together. Sources: the official trophy list (Exophase) for name, description and grade; our own reading of the official description, not yet checked in the game."
   },
   {
    "id": 48,
    "name": "Actions Speak Louder",
    "description": "Choices made (for better or worse).",
    "grade": "bronze",
-   "guide": "Make choices (PSN tracks a count to 500)."
+   "kind": "misc",
+   "chapter": 8,
+   "stop": 50,
+   "district": "Vice City",
+   "difficulty": "Medium",
+   "time": "Across the route",
+   "missable": false,
+   "guide": "Make choices — the game is counting them, and PSN tracks the count to 500. Every decision you make across the story, the stranger strands and the free-roam moments adds up, so this one fills in the background of the whole route. Do not try to farm it in one session; just play, choose, and check the count now and then. It is not about making the right choices, only about making them. Sources: the official trophy list (Exophase) for name, description and grade; PSNProfiles for the PSN count; our own reading of the official description, not yet checked in the game."
   },
   {
    "id": 49,
    "name": "Bad Luck, I Guess",
    "description": "Second time's the charm.",
    "grade": "bronze",
-   "guide": "Succeed on a second try."
+   "kind": "misc",
+   "chapter": 8,
+   "stop": 51,
+   "district": "Leonida Keys",
+   "difficulty": "Easy",
+   "time": "30 min",
+   "missable": true,
+   "guide": "Fail something once, then succeed on the second try. The name gives it away: this trophy is for the comeback, not the first attempt. Find an activity or challenge you can fail and retry — a race, a challenge, a timed task — fail it once, then win it on the immediate second try. Missable: the success must come right after a failure, so do not fail twice or walk away in between. Sources: the official trophy list (Exophase) for name, description and grade; our own reading of the official description, not yet checked in the game."
   },
   {
    "id": 50,
    "name": "The Truth Is Out There",
    "description": "What the hell just happened?",
    "grade": "bronze",
-   "guide": "Witness something strange."
+   "kind": "misc",
+   "chapter": 8,
+   "stop": 52,
+   "district": "Grassrivers",
+   "difficulty": "Easy",
+   "time": "Across the route",
+   "missable": true,
+   "guide": "Witness something strange — the description reads like a reaction, not an instruction, and that is the point. Somewhere in Leonida there is a weird event, and this trophy pops when you see it. Keep your eyes open while travelling, especially in the quiet and remote corners of the map, and do not rush past anything odd. The exact event is not pinned down by the official description, so this one finds you rather than the other way round. Missable: strange events can be easy to walk past, so slow down in the wild places. Sources: the official trophy list (Exophase) for name, description and grade; our own reading of the official description, not yet checked in the game."
   },
   {
    "id": 51,
    "name": "Ten Pin",
    "description": "Bowl 'em over with a melee drive-by.",
    "grade": "bronze",
-   "guide": "Knock someone down with a melee drive-by."
+   "kind": "activity",
+   "chapter": 6,
+   "stop": 24,
+   "district": "Downtown",
+   "difficulty": "Medium",
+   "time": "30 min",
+   "missable": true,
+   "guide": "Knock someone down with a melee drive-by — a melee attack from a moving vehicle, bowling-pin style. Find a quiet stretch with a pedestrian, build a little speed, and land the hit as you pass. It is a stunt, not a fight, so do not stop or get out. Missable: the hit has to land from the moving vehicle, so line it up and commit to the pass. Sources: the official trophy list (Exophase) for name, description and grade; our own reading of the official description, not yet checked in the game."
   },
   {
    "id": 52,
    "name": "Dime on the Dollar",
    "description": "Earn $250,000 laundering Marked Bills through your contacts.",
    "grade": "bronze",
-   "guide": "Launder $250,000 of marked bills."
+   "kind": "outlaw",
+   "chapter": 7,
+   "stop": 40,
+   "district": "Vice City",
+   "difficulty": "Medium",
+   "time": "3–5 h est.",
+   "missable": false,
+   "guide": "Earn $250,000 by laundering marked bills through your contacts. Marked bills come from robberies, so this trophy feeds directly off the Outlaw Economy chapter: rob, collect the bills, then launder them through your contacts a little at a time. The total builds across many laundering runs, so treat it as a background count while you work the robberies. Sources: the official trophy list (Exophase) for name, description and grade; our own reading of the official description, not yet checked in the game."
   },
   {
    "id": 53,
    "name": "Treat Yo Self",
    "description": "Spend $100,000 across all shops.",
    "grade": "bronze",
-   "guide": "Spend $100,000 in shops."
+   "kind": "outlaw",
+   "chapter": 7,
+   "stop": 41,
+   "district": "Vice City",
+   "difficulty": "Easy",
+   "time": "With the route",
+   "missable": false,
+   "guide": "Spend $100,000 across all the shops of Leonida. Every purchase counts — clothes, weapons, food, car parts — so this one fills up as you play, especially if you buy gear for the harder stops instead of hoarding cash. If you reach the end of the route and are short, top it up with a few big purchases. Sources: the official trophy list (Exophase) for name, description and grade; our own reading of the official description, not yet checked in the game."
   },
   {
    "id": 54,
    "name": "Little Boxes",
    "description": "Purchase all garage properties.",
    "grade": "bronze",
-   "guide": "Buy all 8 garage properties."
+   "kind": "outlaw",
+   "chapter": 7,
+   "stop": 42,
+   "district": "Vice City",
+   "difficulty": "Medium",
+   "time": "2–3 h est.",
+   "missable": false,
+   "guide": "Buy all 8 garage properties across Leonida. Garages are where your collection lives, so buy them as you can afford them — each one also gives you somewhere to store the vehicles from the discovery trophy. The count is 8, so keep a list and check it off as you buy; the last one is easy to forget. Sources: the official trophy list (Exophase) for name, description and grade; our own reading of the official description, not yet checked in the game."
   },
   {
    "id": 55,
    "name": "On the Spot",
    "description": "Register 10 vehicles to the Scooter Bros app.",
    "grade": "bronze",
-   "guide": "Register 10 vehicles in the Scooter Bros app."
+   "kind": "activity",
+   "chapter": 6,
+   "stop": 29,
+   "district": "Vice City",
+   "difficulty": "Easy",
+   "time": "1 h est.",
+   "missable": false,
+   "guide": "Register 10 vehicles to the Scooter Bros app. Find a vehicle, open the app and register it, then move to the next — any ten vehicles count, so use the ones you pass while doing other stops. It is a quick errand trophy: ten registrations, no skill needed, just the habit of registering instead of driving past. Sources: the official trophy list (Exophase) for name, description and grade; our own reading of the official description, not yet checked in the game."
   }
  ]
 }
