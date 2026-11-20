@@ -1,298 +1,302 @@
-// Leonida Platinum Route — a story-ordered trophy guide and tracker for GTA VI.
-// Loads the official 55-trophy list from data/trophies.json, draws the district
-// map with one pin per trophy in route order, and saves progress in localStorage.
-const STORAGE_KEY = 'leonida-platinum-route-v2';
-const DEMO_EARNED = [2, 44, 3, 4, 8, 5, 9, 10, 11, 6, 12, 13, 22];
+// Leonida Platinum Route: a story-ordered journey map over the 55 official GTA VI trophies.
+// Data: app/data/trophies.json (official names, descriptions, grades; our own guides) and
+// app/data/chapters.json (the 9 chapters of the route). Progress lives in localStorage.
+const KEY = 'leonida-platinum-route-v2';
+const DEMO_EARNED = [2, 3, 4, 8, 44, 16, 20, 21, 46, 35, 42, 52, 53];
+const view = document.getElementById('view');
+const searchEl = document.getElementById('search');
+const kindEl = document.getElementById('kind');
+const gradeEl = document.getElementById('grade');
+const spoilersEl = document.getElementById('spoilers');
+const hideEarnedEl = document.getElementById('hideEarned');
 
-const CHAPTER_COLORS = {
-  1: '#0f766e', 2: '#3a8a5f', 3: '#b98a2f', 4: '#d24e2a', 5: '#7c5cbf',
-  6: '#2e7fb8', 7: '#8c2f39', 8: '#6b7c8c', 9: '#a67c00',
-};
-const GRADE_COLORS = {
-  platinum: '#7fa8c9', gold: '#d4af37', silver: '#9aa5b1', bronze: '#c98b5e',
-};
-const DISTRICTS = {
-  'Mount Kalina': [340, 170], 'Ambrosia': [590, 150], 'North Vice': [1010, 200],
-  'Vice City': [900, 460], 'Ocean Beach': [1010, 530], 'VCIA': [830, 580],
-  'Port Gellhorn': [190, 400], 'Grassrivers': [340, 510], 'Leonida Bay': [680, 320],
-  'Leonida Keys': [830, 655], 'Downtown': [830, 330],
-};
-const KIND_LABELS = {
-  story: 'Story', side: 'Stranger', activity: 'Activity', collectible: 'Collectible',
-  outlaw: 'Outlaw', exploration: 'Exploration', misc: 'Loose end',
-};
-
-const params = new URLSearchParams(location.search);
-let earned = loadProgress();
-if (params.get('demo') === '1' && !localStorage.getItem(STORAGE_KEY)) {
-  earned = new Set(DEMO_EARNED);
-  saveProgress();
-}
-
-const doc = await (await fetch('data/trophies.json')).json();
-const trophies = doc.trophies.slice().sort((a, b) => a.stop - b.stop);
+const data = await (await fetch('data/trophies.json')).json();
+const chaptersData = await (await fetch('data/chapters.json')).json();
+const trophies = data.trophies;
+const chapters = chaptersData.chapters;
 const byId = new Map(trophies.map((t) => [t.id, t]));
-const chapters = doc.chapters;
+const chapterOf = new Map();
+for (const c of chapters) for (const id of c.trophies) chapterOf.set(id, c);
 
-const $ = (id) => document.getElementById(id);
-const views = ['map', 'route', 'trophies', 'tracker', 'detail'];
-
-function loadProgress() {
-  try {
-    return new Set(JSON.parse(localStorage.getItem(STORAGE_KEY) ?? '[]'));
-  } catch {
-    return new Set();
-  }
+let earned = new Set(JSON.parse(localStorage.getItem(KEY) ?? '[]'));
+if (new URLSearchParams(location.search).has('demo') && earned.size === 0) {
+  earned = new Set(DEMO_EARNED);
+  save();
 }
 
-function saveProgress() {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify([...earned]));
+function save() {
+  localStorage.setItem(KEY, JSON.stringify([...earned].sort((a, b) => a - b)));
 }
 
-function toggleEarned(id) {
-  if (earned.has(id)) earned.delete(id);
-  else earned.add(id);
-  saveProgress();
-  renderAll();
+function gradeTag(t) {
+  return `<span class="tag ${t.grade}">${t.grade}</span>`;
 }
-
-function nextStop() {
-  return trophies.find((t) => !earned.has(t.id)) ?? null;
+function kindTag(t) {
+  if (t.kind === t.grade) return '';
+  return `<span class="tag kind">${t.kind}</span>`;
 }
-
-function gradeDot(t) {
-  return `<span class="grade-dot" style="background:${GRADE_COLORS[t.grade]}" title="${t.grade}"></span>`;
+function missableTag(t) {
+  return t.missable ? '<span class="tag missable">⚠ missable</span>' : '';
 }
-
-function badges(t) {
-  const parts = [`<span class="badge grade-${t.grade}">${t.grade}</span>`];
-  parts.push(`<span class="badge">${KIND_LABELS[t.kind] ?? t.kind}</span>`);
-  if (t.missable) parts.push('<span class="badge missable">Missable</span>');
-  if (earned.has(t.id)) parts.push('<span class="badge earned-badge">Earned</span>');
-  return parts.join('');
+function hiddenTag(t) {
+  return t.hidden ? '<span class="tag hidden">hidden on PSN</span>' : '';
 }
-
+function esc(s) {
+  return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
 function spoilerHidden(t) {
-  return $('spoilers').checked && t.kind === 'story' && !earned.has(t.id);
+  return spoilersEl.checked && t.kind === 'story' && !earned.has(t.id);
+}
+function trophyName(t) {
+  return spoilerHidden(t) ? 'Hidden story trophy — earn it to reveal its name' : esc(t.name);
+}
+function trophyDesc(t) {
+  return spoilerHidden(t) ? 'Its name and description stay hidden until you earn it.' : esc(t.description);
 }
 
-function renderHeader() {
-  const count = earned.size;
-  $('earned-count').textContent = count;
-  $('meter-fill').style.width = `${(count / trophies.length) * 100}%`;
-  const next = nextStop();
-  $('next-up').textContent = next
-    ? `Next stop: ${next.stop}. ${next.name} — ${chapters[next.chapter - 1].title}`
-    : 'Route complete — platinum earned!';
+function updateProgress() {
+  const total = trophies.length;
+  const missableLeft = trophies.filter((t) => t.missable && !earned.has(t.id)).length;
+  document.getElementById('progressCount').textContent = `${earned.size} / ${total}`;
+  document.getElementById('progressBar').style.width = `${Math.round((earned.size / total) * 100)}%`;
+  document.getElementById('progressText').textContent = `${earned.size} earned · ${missableLeft} missable left · ${total - earned.size} to go`;
 }
 
-function renderDistrictMap() {
-  const pins = $('pins');
-  const perDistrict = {};
-  let html = '';
-  for (const t of trophies) {
-    const center = DISTRICTS[t.district] ?? DISTRICTS['Vice City'];
-    const idx = perDistrict[t.district] ?? 0;
-    perDistrict[t.district] = idx + 1;
-    const col = idx % 5;
-    const row = Math.floor(idx / 5);
-    const x = center[0] + (col - 2) * 27;
-    const y = center[1] + (row - 1) * 27;
-    html += `<g class="pin${earned.has(t.id) ? ' earned' : ''}" data-id="${t.id}">`
-      + `<circle cx="${x}" cy="${y}" r="13" fill="${CHAPTER_COLORS[t.chapter]}"></circle>`
-      + `<text x="${x}" y="${y + 4}" font-size="11">${t.stop}</text>`
-      + `<title>Stop ${t.stop}: ${t.name} (${chapters[t.chapter - 1].title})</title></g>`;
-  }
-  pins.innerHTML = html;
-  pins.querySelectorAll('.pin').forEach((g) => {
-    g.addEventListener('click', () => { location.hash = `#/trophy/${g.dataset.id}`; });
+function sourceLinks() {
+  const ex = document.createElement('a');
+  ex.href = data.sources.exophase;
+  ex.textContent = 'Exophase (official list)';
+  ex.target = '_blank';
+  ex.rel = 'noopener';
+  const ps = document.createElement('a');
+  ps.href = data.sources.psnprofiles;
+  ps.textContent = 'PSNProfiles';
+  ps.target = '_blank';
+  ps.rel = 'noopener';
+  return [ex, ps];
+}
+
+function trophyRow(t) {
+  const row = document.createElement('div');
+  row.className = 'row' + (earned.has(t.id) ? ' earned' : '');
+  const box = document.createElement('input');
+  box.type = 'checkbox';
+  box.checked = earned.has(t.id);
+  box.setAttribute('aria-label', `Earned: ${t.name}`);
+  box.addEventListener('change', () => {
+    if (box.checked) earned.add(t.id);
+    else earned.delete(t.id);
+    save();
+    render();
   });
-  $('legend').innerHTML = chapters.map((c) =>
-    `<span><i style="background:${CHAPTER_COLORS[c.n]}"></i>Ch ${c.n} · ${c.title}</span>`).join('');
+  const body = document.createElement('div');
+  body.className = 'body';
+  const name = document.createElement('div');
+  name.className = 'name';
+  const link = document.createElement('a');
+  link.href = `#/trophy/${t.id}`;
+  link.innerHTML = trophyName(t);
+  name.append(link);
+  const desc = document.createElement('div');
+  desc.className = 'desc';
+  desc.innerHTML = trophyDesc(t);
+  const tags = document.createElement('div');
+  tags.innerHTML = gradeTag(t) + kindTag(t) + missableTag(t) + hiddenTag(t) +
+    `<span class="tag kind">Ch ${t.chapter}</span><span class="tag kind">${esc(t.difficulty)} · ${esc(t.time)}</span>`;
+  const guide = document.createElement('div');
+  guide.className = 'guide';
+  guide.textContent = spoilerHidden(t) ? '' : t.guide;
+  body.append(name, desc, tags, guide);
+  row.append(box, body);
+  return row;
 }
 
-function renderRoute() {
-  const host = $('chapters');
-  host.replaceChildren();
-  for (const c of chapters) {
-    const stops = trophies.filter((t) => t.chapter === c.n);
-    const done = stops.filter((t) => earned.has(t.id)).length;
-    const section = document.createElement('div');
-    section.className = 'chapter';
-    section.innerHTML = `<div class="chapter-head"><div><h3>Chapter ${c.n} — ${c.title}</h3>`
-      + `<p>${c.blurb}</p></div><span class="chapter-count">${done} / ${stops.length} earned</span></div>`;
-    const list = document.createElement('ul');
-    list.className = 'stops';
-    for (const t of stops) {
-      const li = document.createElement('li');
-      const hidden = spoilerHidden(t);
-      li.innerHTML = `<span class="stop-num${earned.has(t.id) ? ' done' : ''}" style="background:${CHAPTER_COLORS[t.chapter]}">${t.stop}</span>`
-        + `<span><span class="stop-name">${hidden ? 'Hidden story trophy' : t.name}</span>`
-        + `${t.missable ? ' <span class="flag">MISSABLE</span>' : ''}<br>`
-        + `<span class="stop-sub">${hidden ? 'Earn it to reveal the name.' : t.description}</span></span>`
-        + `<span class="stop-meta">${gradeDot(t)}${t.grade} · ${t.difficulty} · ${t.time}</span>`;
-      li.addEventListener('click', () => { location.hash = `#/trophy/${t.id}`; });
-      list.append(li);
-    }
-    section.append(list);
-    host.append(section);
-  }
-}
-
-function filteredTrophies() {
-  const q = $('search').value.trim().toLowerCase();
-  const kind = $('kind').value;
-  const grade = $('grade').value;
-  const missableOnly = $('missable-only').checked;
-  return trophies.filter((t) => {
-    if (kind !== 'all' && t.kind !== kind) return false;
-    if (grade !== 'all' && t.grade !== grade) return false;
-    if (missableOnly && !t.missable) return false;
-    if (q && !(t.name.toLowerCase().includes(q) || t.description.toLowerCase().includes(q))) return false;
+function filtered(list) {
+  const q = searchEl.value.trim().toLowerCase();
+  return list.filter((t) => {
+    if (kindEl.value === 'missable' && !t.missable) return false;
+    if (kindEl.value === 'online') return false;
+    if (kindEl.value !== 'all' && kindEl.value !== 'missable' && kindEl.value !== 'online' && t.kind !== kindEl.value) return false;
+    if (gradeEl.value !== 'all' && t.grade !== gradeEl.value) return false;
+    if (hideEarnedEl.checked && earned.has(t.id)) return false;
+    if (q && !(t.name.toLowerCase().includes(q) || t.description.toLowerCase().includes(q) || t.guide.toLowerCase().includes(q))) return false;
     return true;
   });
 }
 
-function renderTrophyList() {
-  const list = filteredTrophies();
-  $('result-count').textContent = `Showing ${list.length} of 55 trophies · ${earned.size} earned`;
-  const host = $('trophy-list');
-  host.replaceChildren();
-  for (const t of list) {
-    const hidden = spoilerHidden(t);
-    const card = document.createElement('article');
-    card.className = `trophy-card${earned.has(t.id) ? ' earned' : ''}`;
-    card.innerHTML = `<div class="card-top"><h3>Stop ${t.stop} — ${hidden ? 'Hidden story trophy' : t.name}</h3>`
-      + `<span class="badges">${badges(t)}</span></div>`
-      + `<p class="desc">${hidden ? 'A story trophy. Earn it to reveal its name and description.' : t.description}</p>`
-      + (hidden ? '' : `<p class="guide">${t.guide}</p>`
-        + `<p class="sources">Difficulty: ${t.difficulty} · Time: ${t.time} · District: ${t.district} · Chapter ${t.chapter} — ${chapters[t.chapter - 1].title}</p>`);
-    card.addEventListener('click', () => { location.hash = `#/trophy/${t.id}`; });
-    host.append(card);
+function renderMap() {
+  view.innerHTML = `<h2>The map of Leonida</h2>
+  <p class="lede">Nine chapters, one road. Each pin is a chapter of the route; tap a pin or a chapter card to see its trophies in story order. The map is drawn by this guide — no Rockstar artwork.</p>
+  <div class="mapWrap"><svg viewBox="0 0 1000 700" role="img" aria-label="Illustrated map of Leonida with nine chapter pins">
+  <rect x="0" y="0" width="1000" height="700" fill="#f3e9c8"/>
+  <path d="M0,120 C180,60 320,180 470,140 C640,95 780,190 1000,120 L1000,0 L0,0 Z" fill="#bcd6e8"/>
+  <path d="M0,560 C200,500 350,620 520,560 C700,500 850,600 1000,540 L1000,700 L0,700 Z" fill="#bcd6e8"/>
+  <path d="M120,700 C200,520 160,380 260,300 C340,240 300,120 420,60" fill="none" stroke="#d9c98f" stroke-width="14"/>
+  <path d="M260,300 C420,340 560,260 700,300 C820,330 880,260 960,300" fill="none" stroke="#d9c98f" stroke-width="14"/>
+  <path d="M420,60 C460,220 380,420 520,560" fill="none" stroke="#d9c98f" stroke-width="10"/>
+  <text class="district" x="620" y="180">VICE CITY</text>
+  <text class="district" x="820" y="380">OCEAN BEACH</text>
+  <text class="district" x="480" y="640">LEONIDA KEYS</text>
+  <text class="district" x="120" y="260">PORT GELLHORN</text>
+  <text class="district" x="700" y="520">AMBROSIA</text>
+  <text class="district" x="330" y="90">MOUNT KALAGA</text>
+  <text class="district" x="240" y="560">GRASSRIVERS</text>
+  <text class="legend" x="20" y="690">Drawn map — districts placed for the route, not to scale.</text>
+  ${chapters.map((c) => {
+    const done = c.trophies.filter((id) => earned.has(id)).length;
+    return `<a href="#/route" class="pin${done === c.trophies.length ? ' done' : ''}"><g transform="translate(${c.map.x},${c.map.y})"><circle r="17"/><text y="5">${c.id}</text><title>Chapter ${c.id}: ${esc(c.name)} — ${done}/${c.trophies.length} earned</title></g></a>`;
+  }).join('')}
+  </svg></div>
+  <div class="chapters" id="chapterCards"></div>`;
+  const cards = document.getElementById('chapterCards');
+  for (const c of chapters) {
+    const done = c.trophies.filter((id) => earned.has(id)).length;
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.innerHTML = `<h3><a href="#/route">Ch ${c.id} · ${esc(c.name)}</a></h3>
+      <p class="muted">${esc(c.district)} · ${done}/${c.trophies.length} earned</p>
+      <p>${esc(c.goal)}</p>`;
+    cards.append(card);
   }
+}
+
+function renderRoute() {
+  view.innerHTML = `<h2>The route — 9 chapters in story order</h2>
+  <p class="lede">Play the chapters in order. Story trophies come first; collectibles, activities and heists follow; the platinum closes the road. Use the filters above to narrow any chapter's list.</p><div id="chapters"></div>`;
+  const host = document.getElementById('chapters');
+  for (const c of chapters) {
+    const done = c.trophies.filter((id) => earned.has(id)).length;
+    const sec = document.createElement('section');
+    sec.innerHTML = `<h3>Chapter ${c.id} — ${esc(c.name)} <span class="muted">(${esc(c.district)} · ${done}/${c.trophies.length})</span></h3>
+      <p class="lede">${esc(c.goal)} ${esc(c.note)}</p>`;
+    const list = document.createElement('div');
+    list.className = 'list';
+    for (const t of filtered(c.trophies.map((id) => byId.get(id)))) list.append(trophyRow(t));
+    if (!list.children.length) list.innerHTML = '<div class="empty">No trophies in this chapter match the current filters.</div>';
+    sec.append(list);
+    host.append(sec);
+  }
+}
+
+function renderTracker() {
+  const list = filtered(trophies);
+  const demo = new URLSearchParams(location.search).has('demo');
+  view.innerHTML = `<h2>Tracker — ${earned.size} of ${trophies.length} earned</h2>
+  ${demo ? '<p class="lede"><strong>Demo progress:</strong> 13 trophies are pre-ticked so you can see the tracker at work. Use Reset progress below to start from zero.</p>' : ''}
+  <p class="lede">Tick trophies off as you earn them; progress is saved in this browser. Export a backup file, or import one to restore it on another device. Spoiler mode hides story trophies until earned.</p><div class="list" id="tlist"></div>`;
+  const host = document.getElementById('tlist');
+  if (kindEl.value === 'online') {
+    host.innerHTML = '<div class="empty">No online trophies in the official list — every one of the 55 is earned in single-player. The online filter is here because the rules ask for it.</div>';
+  }
+  for (const t of list) host.append(trophyRow(t));
+  if (!list.length && kindEl.value !== 'online') host.innerHTML = '<div class="empty">No trophies match the current filters.</div>';
+}
+
+function renderMissable() {
+  const list = filtered(trophies.filter((t) => t.missable));
+  view.innerHTML = `<h2>Missable trophies — ${list.length} flagged</h2>
+  <p class="lede">Flags are built from the official descriptions: these trophies need a specific setup, a partner, a choice, or a one-time moment. They are watch-outs, not confirmed misses — the game is new and nothing here has been checked in play yet. Read each guide before you start its job.</p><div class="list" id="mlist"></div>`;
+  const host = document.getElementById('mlist');
+  for (const t of list) host.append(trophyRow(t));
+  if (!list.length) host.innerHTML = '<div class="empty">No missable trophies match the current filters.</div>';
+}
+
+function renderRoadmap() {
+  view.innerHTML = `<h2>Roadmap to the platinum</h2>
+  <p class="lede">Built from the official descriptions. Roughly 60+ hours for the full route.</p>
+  <ol class="steps">
+  ${chapters.map((c) => {
+    const done = c.trophies.filter((id) => earned.has(id)).length;
+    return `<li><strong>Chapter ${c.id} — ${esc(c.name)}</strong> (${done}/${c.trophies.length} earned): ${esc(c.goal)}</li>`;
+  }).join('')}
+  </ol>
+  <p class="lede">Finish the story chapters first, then the stranger strands, then activities and collectibles, then heists and money. Save the 100% completion trophy for last — it needs everything else done.</p>`;
 }
 
 function renderDetail(id) {
   const t = byId.get(id);
-  const host = $('detail');
-  if (!t) {
-    host.innerHTML = '<p>That stop is not on the route.</p>';
-    return;
+  if (!t) { location.hash = '#/map'; return; }
+  const c = chapterOf.get(id);
+  view.innerHTML = '';
+  const d = document.createElement('div');
+  d.className = 'detail';
+  const h = document.createElement('h2');
+  h.innerHTML = trophyName(t);
+  const meta = document.createElement('div');
+  meta.className = 'meta';
+  meta.innerHTML = gradeTag(t) + kindTag(t) + missableTag(t) + hiddenTag(t) +
+    `<span class="tag kind">Chapter ${t.chapter} — ${esc(c ? c.name : '')}</span><span class="tag kind">${esc(t.difficulty)} · about ${esc(t.time)}</span>`;
+  const desc = document.createElement('p');
+  desc.className = 'desc';
+  desc.innerHTML = `<strong>Official description:</strong> ${trophyDesc(t)}`;
+  const guide = document.createElement('p');
+  guide.className = 'guide';
+  guide.textContent = spoilerHidden(t) ? '' : t.guide;
+  const src = document.createElement('p');
+  src.className = 'sources';
+  src.textContent = 'Sources: ';
+  const [ex, ps] = sourceLinks();
+  src.append(ex, document.createTextNode(' for the official name, description and grade; '), ps, document.createTextNode(' for the grade and PSN progress target; our own advice from the official description, not yet checked in the game.'));
+  const actions = document.createElement('p');
+  const toggle = document.createElement('button');
+  toggle.type = 'button';
+  toggle.textContent = earned.has(t.id) ? '✓ Earned — mark as not earned' : 'Mark as earned';
+  toggle.addEventListener('click', () => { earned.has(t.id) ? earned.delete(t.id) : earned.add(t.id); save(); render(); });
+  const back = document.createElement('a');
+  back.href = '#/route';
+  back.textContent = '← Back to the route';
+  back.style.marginLeft = '12px';
+  actions.append(toggle, back);
+  const nextIds = c ? c.trophies : [];
+  const pos = nextIds.indexOf(id);
+  let next = null;
+  if (pos >= 0 && pos + 1 < nextIds.length) {
+    const nextT = byId.get(nextIds[pos + 1]);
+    next = document.createElement('p');
+    const nextLink = document.createElement('a');
+    nextLink.href = `#/trophy/${nextT.id}`;
+    nextLink.textContent = `Next in Chapter ${t.chapter}: ${spoilerHidden(nextT) ? 'hidden story trophy' : nextT.name} →`;
+    next.append(nextLink);
   }
-  const hidden = spoilerHidden(t);
-  const prev = trophies.find((x) => x.stop === t.stop - 1) ?? null;
-  const next = trophies.find((x) => x.stop === t.stop + 1) ?? null;
-  const chapter = chapters[t.chapter - 1];
-  host.innerHTML = `<div class="detail-head"><div><p class="kicker">Stop ${t.stop} of 55 · Chapter ${t.chapter} — ${chapter.title}</p>`
-    + `<h2>${hidden ? 'Hidden story trophy' : t.name}</h2>`
-    + `<p class="desc">${hidden ? 'A story trophy. Earn it to reveal its name and description.' : t.description}</p>`
-    + `<p class="detail-meta">${gradeDot(t)} ${t.grade} · ${KIND_LABELS[t.kind] ?? t.kind} · ${t.district} · Difficulty: ${t.difficulty} · Time: ${t.time}${t.missable ? ' · Missable — set it up deliberately' : ''}</p></div>`
-    + `<span class="badges">${badges(t)}</span></div>`
-    + (hidden
-      ? '<p class="detail-guide">Spoilers are hidden until this story trophy is earned. Open it from the map or the route once you have it, or turn spoilers off in the All Trophies tab.</p>'
-      : `<div class="detail-guide"><p>${t.guide}</p></div>`
-        + `<p class="detail-sources">Sources: the official trophy list (Exophase) for the name, description and grade; PSNProfiles for the PSN count where one is shown. The guide is our own reading of the official description, not yet checked in the game. ${t.missable ? 'Missable means the moment can pass or the attempt can fail — set it up again or replay the mission.' : ''}</p>`)
-    + `<div class="detail-actions">`
-    + `<button type="button" class="${earned.has(t.id) ? 'earned-btn' : 'primary'}" id="detail-toggle">${earned.has(t.id) ? 'Earned — tap to unmark' : 'Mark as earned'}</button>`
-    + `<button type="button" id="detail-back">Back to the route</button>`
-    + (prev ? `<button type="button" id="detail-prev">← Stop ${prev.stop}: ${prev.name}</button>` : '')
-    + (next ? `<button type="button" id="detail-next">Stop ${next.stop}: ${next.name} →</button>` : '')
-    + '</div>';
-  $('detail-toggle').addEventListener('click', () => toggleEarned(t.id));
-  $('detail-back').addEventListener('click', () => { location.hash = '#/route'; });
-  if (prev) $('detail-prev').addEventListener('click', () => { location.hash = `#/trophy/${prev.id}`; });
-  if (next) $('detail-next').addEventListener('click', () => { location.hash = `#/trophy/${next.id}`; });
+  d.append(h, meta, desc, guide, src, actions);
+  if (next) d.append(next);
+  view.append(d);
 }
 
-function renderTracker() {
-  const count = earned.size;
-  $('tracker-count').textContent = count;
-  $('tracker-meter').style.width = `${(count / trophies.length) * 100}%`;
-  const remaining = trophies.filter((t) => !earned.has(t.id));
-  const next = remaining[0] ?? null;
-  $('tracker-summary').textContent = next
-    ? `${remaining.length} to go. Next stop: ${next.stop}. ${next.name} (${chapters[next.chapter - 1].title}).`
-    : 'Every stop earned — the platinum is yours.';
-  $('chapter-bars').innerHTML = chapters.map((c) => {
-    const stops = trophies.filter((t) => t.chapter === c.n);
-    const done = stops.filter((t) => earned.has(t.id)).length;
-    const pct = Math.round((done / stops.length) * 100);
-    return `<div class="chapter-bar"><div class="bar-label"><span>Chapter ${c.n} — ${c.title}</span><span>${done}/${stops.length}</span></div>`
-      + `<div class="meter"><div class="meter-fill" style="width:${pct}%"></div></div></div>`;
-  }).join('');
-  $('remaining-list').innerHTML = remaining.length
-    ? `<ul class="mini-list">${remaining.map((t) => `<li>Stop ${t.stop} — ${t.name}</li>`).join('')}</ul>`
-    : '<p>Nothing left — route complete.</p>';
-  $('earned-list').innerHTML = earned.size
-    ? `<ul class="mini-list">${trophies.filter((t) => earned.has(t.id)).map((t) => `<li class="done">Stop ${t.stop} — ${t.name}</li>`).join('')}</ul>`
-    : '<p>No stops earned yet. Start at stop 1.</p>';
-}
-
-function showView(name, arg) {
-  for (const v of views) $(`view-${v}`).hidden = v !== name;
-  for (const v of ['map', 'route', 'trophies', 'tracker']) {
-    $(`tab-${v}`).classList.toggle('active', v === name || (name === 'detail' && v === 'route'));
-  }
-  if (name === 'detail') renderDetail(Number(arg));
-}
-
-function route() {
+function render() {
+  updateProgress();
   const hash = location.hash || '#/map';
-  const parts = hash.replace(/^#\//, '').split('/');
-  if (parts[0] === 'trophy' && parts[1]) showView('detail', parts[1]);
-  else if (views.includes(parts[0])) showView(parts[0]);
-  else showView('map');
+  const m = hash.match(/^#\/trophy\/(\d+)$/);
+  document.querySelectorAll('.tabs a').forEach((a) => a.classList.toggle('active', hash.startsWith('#/' + a.dataset.view)));
+  if (m) { renderDetail(Number(m[1])); return; }
+  if (hash === '#/route') renderRoute();
+  else if (hash === '#/tracker') renderTracker();
+  else if (hash === '#/missable') renderMissable();
+  else if (hash === '#/roadmap') renderRoadmap();
+  else renderMap();
 }
 
-function renderAll() {
-  renderHeader();
-  renderDistrictMap();
-  renderRoute();
-  renderTrophyList();
-  renderTracker();
-  route();
-}
-
-for (const v of ['map', 'route', 'trophies', 'tracker']) {
-  $(`tab-${v}`).addEventListener('click', () => { location.hash = `#/${v}`; });
-}
-$('start-route').addEventListener('click', () => {
-  const next = nextStop();
-  location.hash = next ? `#/trophy/${next.id}` : '#/tracker';
-});
-for (const id of ['search', 'kind', 'grade', 'missable-only', 'spoilers']) {
-  $(id).addEventListener('input', renderTrophyList);
-  $(id).addEventListener('change', () => { renderTrophyList(); renderRoute(); });
-}
-$('spoilers').addEventListener('change', renderRoute);
-
-$('export').addEventListener('click', () => {
+document.getElementById('exportBtn').addEventListener('click', () => {
   const a = document.createElement('a');
-  a.href = URL.createObjectURL(new Blob([JSON.stringify({ app: 'leonida-platinum-route', earned: [...earned] }, null, 2)], { type: 'application/json' }));
+  a.href = URL.createObjectURL(new Blob([JSON.stringify({ app: 'leonida-platinum-route', earned: [...earned].sort((x, y) => x - y) }, null, 2)], { type: 'application/json' }));
   a.download = 'leonida-platinum-route-progress.json';
   a.click();
 });
-$('import').addEventListener('change', async (e) => {
+document.getElementById('importFile').addEventListener('change', async (e) => {
   const file = e.target.files[0];
   if (!file) return;
   try {
-    const data = JSON.parse(await file.text());
-    const names = new Set(trophies.map((t) => t.name));
-    const ids = (data.earned ?? data).filter((n) => names.has(n)).map((n) => trophies.find((t) => t.name === n).id);
-    earned = new Set(ids);
-    saveProgress();
-    renderAll();
-  } catch {
-    alert('That file is not a valid progress export.');
-  }
+    const parsed = JSON.parse(await file.text());
+    const ids = Array.isArray(parsed) ? parsed : parsed.earned;
+    const next = new Set(ids.filter((n) => byId.has(n)));
+    earned = next;
+    save();
+    render();
+  } catch { alert('That file is not a progress export from this guide.'); }
 });
-$('reset').addEventListener('click', () => {
-  if (confirm('Clear all earned stops?')) {
-    earned = new Set();
-    saveProgress();
-    renderAll();
-  }
+document.getElementById('resetBtn').addEventListener('click', () => {
+  if (confirm('Clear all earned trophies?')) { earned = new Set(); save(); render(); }
 });
-
-window.addEventListener('hashchange', route);
-renderAll();
+for (const el of [searchEl, kindEl, gradeEl, spoilersEl, hideEarnedEl]) el.addEventListener('input', render);
+window.addEventListener('hashchange', render);
+render();
